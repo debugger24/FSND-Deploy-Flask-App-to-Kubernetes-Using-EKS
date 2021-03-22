@@ -42,6 +42,8 @@ phases:
   post_build:
     commands:
       - docker push $REPOSITORY_URI:$TAG
+      - echo $REPOSITORY_URI
+      - echo $TAG
       - echo $EKS_KUBECTL_ROLE_ARN
       - echo $EKS_CLUSTER_NAME
       - aws eks update-kubeconfig --name $EKS_CLUSTER_NAME --role-arn $EKS_KUBECTL_ROLE_ARN
